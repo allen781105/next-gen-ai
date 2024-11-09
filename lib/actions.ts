@@ -142,6 +142,7 @@ export const createCheckoutSession =
 				url: checkoutSession.url!,
 			};
 		} catch (error) {
+			console.log(error);
 			return {
 				error: "Something went wrong while creating checkout session",
 			};

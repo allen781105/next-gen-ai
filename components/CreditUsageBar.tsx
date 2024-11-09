@@ -1,8 +1,10 @@
 import { countContext } from "@/context/UsageProvider";
+import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
 const CreditsUsageBar = () => {
 	const ctx = useContext(countContext);
+	const router = useRouter();
 	const credits = 10000;
 	const percentage =
 		ctx?.subStatus === "active" ? 100 : (ctx?.count! / credits) * 100;
@@ -22,11 +24,14 @@ const CreditsUsageBar = () => {
 					<div>
 						{ctx?.subStatus === "active"
 							? "unlimit credits"
-							: `${ctx?.count! / credits} usage`}
+							: `${ctx?.count!} / ${credits} usage`}
 					</div>
 				</div>
 				{ctx?.subStatus === "active" ? null : (
-					<button className="hover:scale-105 transition-all ease-in-out bg-emerald-500 my-4 text-white w-full px-4 py-3 rounded-lg">
+					<button
+						onClick={() => router.push("/membership")}
+						className="hover:scale-105 transition-all ease-in-out bg-emerald-500 my-4 text-white w-full px-4 py-3 rounded-lg"
+					>
 						Upgrade
 					</button>
 				)}

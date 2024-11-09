@@ -36,7 +36,6 @@ export const UsageProvider = ({ children }: { children: React.ReactNode }) => {
 			const wordsCount = record?.contents?.trim().split(/\s+/).length;
 			return sum + wordsCount!;
 		}, 0);
-		console.log(totalWords);
 		setCount(totalWords);
 	};
 	const getSubStatus = async () => {

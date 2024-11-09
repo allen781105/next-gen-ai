@@ -4,7 +4,7 @@ export default async function Home() {
 	return (
 		<div className="flex flex-1 h-screen w-full flex-col items-center justify-center text-center px-4 py-20 bg-gradient-to-r from-green-50/50 via-teal-50 to-green-50/50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800">
 			<button className="border border-white-700 dark:border-gray-300 rounded-lg py-2 px-4 text-white-400 dark:text-gray-300 text-sm mb-5 transition duration-300 ease-in-out hover:text-gray-500 dark:hover:text-gray-400">
-				Forget about spending hundreds $
+				Forget about spending hundreds
 			</button>
 			<h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-white-300 dark:text-gray-300 sm:text-7xl">
 				Revolutionize Your Content

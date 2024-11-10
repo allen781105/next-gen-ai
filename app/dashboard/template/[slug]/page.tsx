@@ -90,7 +90,7 @@ const TemplateDetailPage = (props: Props) => {
 					<button
 						type="submit"
 						disabled={
-							loading || ctx?.subStatus === "inactive" || ctx?.count! >= 10000
+							loading || (ctx?.subStatus === "inactive" && ctx?.count! >= 10000)
 						}
 						className="bg-emerald-500 disabled:cursor-not-allowed my-4 text-white w-full px-4 py-3 rounded-lg"
 					>

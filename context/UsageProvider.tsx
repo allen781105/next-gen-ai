@@ -30,8 +30,6 @@ export const UsageProvider = ({ children }: { children: React.ReactNode }) => {
 	}, [count]);
 	const getUsage = async () => {
 		const words = await countUsage();
-		// console.log(words[0]?.contents);
-		console.log(words.map((word) => word.contents));
 		const totalWords = words.reduce((sum, record) => {
 			const wordsCount = record?.contents?.trim().split(/\s+/).length;
 			return sum + wordsCount!;

@@ -1,10 +1,9 @@
 "use server";
 import { auth } from "@/auth";
 import { prisma } from "@/prisma/prisma";
-import Stripe from "stripe";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { PrismaClient } from "@prisma/client/extension";
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_API_KEY!);
+import Stripe from "stripe";
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_API!);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 interface CheckoutSessionResponse {
 	url?: string;
@@ -13,12 +12,20 @@ interface CheckoutSessionResponse {
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 	apiVersion: "2024-09-30.acacia",
 });
-// console.log(result.response.text());
+
 export const genContent = async (prompt: string) => {
-	const result = await model.generateContent(prompt);
-	return {
-		content: result.response.text(),
-	};
+	try {
+		const result = await model.generateContent(prompt);
+		return {
+			content: result.response.text(),
+		};
+	} catch (error) {
+		console.log(error);
+		return {
+			status: "error",
+			error: "Some error occurred",
+		};
+	}
 };
 export const saveQuery = async ({
 	template,
@@ -72,7 +79,7 @@ export const countUsage = async () => {
 	const currentDate = new Date();
 	const currentMonth = currentDate.getMonth() + 1;
 	const currentYear = currentDate.getFullYear();
-	console.log(session?.user?.email, "from  count action");
+	// console.log(session?.user?.email, "from  count action");
 	// const count = await prisma.query.aggregate({
 	// 	where: {
 	// 		email: session?.user?.email!,
@@ -93,7 +100,7 @@ export const countUsage = async () => {
 			contents: true,
 		},
 	});
-	console.log(records);
+	// console.log(records);
 	return records;
 };
 export const createCheckoutSession =

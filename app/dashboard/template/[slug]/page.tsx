@@ -20,13 +20,13 @@ interface Template {
 	}[];
 }
 interface Props {
-	params: Promise<{
+	params: {
 		slug: string;
-	}>;
+	};
 }
 const TemplateDetailPage = (props: Props) => {
 	// const params = await props.params
-	const { slug } = use(props.params);
+	const { slug } = props.params;
 	const ctx = useContext(countContext);
 	const [query, setQuery] = useState("");
 	const [aiContent, setAiContent] = useState("");
@@ -37,9 +37,9 @@ const TemplateDetailPage = (props: Props) => {
 		try {
 			setLoading(true);
 			const res = await genContent(template?.aiPrompt + query);
-			setAiContent(res.content);
+			setAiContent(res?.content!);
 			await saveQuery({
-				content: res.content,
+				content: res?.content!,
 				query,
 				template,
 			});

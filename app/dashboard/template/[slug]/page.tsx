@@ -95,7 +95,7 @@ const TemplateDetailPage = (props: Props) => {
 						className="bg-emerald-500 disabled:cursor-not-allowed my-4 text-white w-full px-4 py-3 rounded-lg"
 					>
 						{loading && <span className="animate-pulse">Generating...</span>}
-						{ctx?.subStatus === "inactive" || ctx?.count! >= 10000
+						{ctx?.subStatus === "inactive" && ctx?.count! >= 10000
 							? "Subscribe to generate content"
 							: "Generate"}
 					</button>

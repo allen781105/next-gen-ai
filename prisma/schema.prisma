@@ -29,20 +29,20 @@ model User {
   updatedAt     DateTime  @updatedAt
 }
 
-model Transaction {
-  id             String   @id @default(cuid())
-  sessionId      String
-  customerId     String
-  email          String
-  amount         Float
-  invoiceId      String
-  subscriptionId String
-  mode           String
-  paymentStatus  String
-  status         String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-}
+// model Transaction {
+//   id             String   @id @default(cuid())
+//   sessionId      String
+//   customerId     String
+//   email          String
+//   amount         Float
+//   invoiceId      String
+//   subscriptionId String
+//   mode           String
+//   paymentStatus  String
+//   status         String
+//   createdAt      DateTime @default(now())
+//   updatedAt      DateTime @updatedAt
+// }
 
 model Account {
   userId            String

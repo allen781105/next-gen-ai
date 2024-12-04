@@ -1,5 +1,6 @@
 "use client";
-import { checkSubscriptionStatus, countUsage } from "@/lib/actions";
+//import { checkSubscriptionStatus, countUsage } from "@/lib/actions";
+import { countUsage } from "@/lib/actions";
 import {
 	createContext,
 	useState,
@@ -37,12 +38,12 @@ export const UsageProvider = ({ children }: { children: React.ReactNode }) => {
 		setCount(totalWords);
 	};
 	const getSubStatus = async () => {
-		const res = await checkSubscriptionStatus();
-		if (res?.status === "active") {
+		//const res = await checkSubscriptionStatus();
+		//if (res?.status === "active") {
 			setSubStatus("active");
-		} else {
-			setSubStatus("inactive");
-		}
+		//} else {
+			//setSubStatus("inactive");
+		//}
 	};
 	return (
 		<countContext.Provider

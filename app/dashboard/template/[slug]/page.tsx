@@ -35,15 +35,16 @@ const TemplateDetailPage = (props: Props) => {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		try {
+			//console.log(template?.aiPrompt + query, "-------------from handleSubmit");
 			setLoading(true);
-			const res = await genContent(template?.aiPrompt + query);
-			setAiContent(res?.content!);
-			await saveQuery({
-				content: res?.content!,
-				query,
-				template,
-			});
-			await ctx?.getUsage();
+			const res = await genContent(template?.aiPrompt!, query);
+			setAiContent(res as string);
+			// await saveQuery({
+			// 	content: res?.content!,
+			// 	query,
+			// 	template,
+			// });
+			// await ctx?.getUsage();
 		} catch (error) {
 			setAiContent("Something went wrong");
 		} finally {
@@ -98,6 +99,7 @@ const TemplateDetailPage = (props: Props) => {
 						{ctx?.subStatus === "inactive" && ctx?.count! >= 10000
 							? "Subscribe to generate content"
 							: "Generate"}
+						{/* Generate */}
 					</button>
 				</form>
 			</div>

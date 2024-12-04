@@ -55,6 +55,7 @@ export default function DashboardLayout({
 		<>
 			<div>
 				<Transition show={sidebarOpen}>
+				{/* <Transition show={false}> */}
 					<Dialog className="relative lg:hidden" onClose={setSidebarOpen}>
 						<TransitionChild
 							enter="transition-opacity ease-linear duration-300"
@@ -99,7 +100,7 @@ export default function DashboardLayout({
 											</button>
 										</div>
 									</TransitionChild>
-									{/* Sidebar component, swap this element with another sidebar if you like */}
+									
 									<div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-800 px-6 pb-2 ring-1 ring-white/10">
 										<nav className="flex flex-1 flex-col">
 											<ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -137,7 +138,7 @@ export default function DashboardLayout({
 
 				{/* Static sidebar for desktop */}
 				<div className="hidden lg:fixed lg:top-[64px] lg:bottom-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-					{/* Sidebar component, swap this element with another sidebar if you like */}
+					
 					<div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-800 px-6">
 						<nav className="flex pt-10 flex-1 flex-col">
 							<ul role="list" className="flex flex-1 flex-col gap-y-7">

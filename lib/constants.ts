@@ -1,32 +1,37 @@
 export default [
 	{
-		name: "Blog Ideas",
-		desc: "An AI tool that generate blog ideas based on the topic you provide",
+		//name: "Blog Ideas",
+		//desc: "An AI tool that generate blog ideas based on the topic you provide",
+		name: "软文创意",
+		desc: "根据您的需求，生成软文创意",
 		category: "Blog",
 		icon: "https://cdn-icons-png.flaticon.com/128/4186/4186534.png",
-		aiPrompt: "Give me 5 blog topic ideas in bullet points for: ",
+		//aiPrompt: "Give me 5 blog topic ideas in bullet points for: ",
+		aiPrompt:
+			"你是一位资深文案策划，请根据客户的需求，生成软文创意，要求生成五个创意，要求创意新颖，有吸引力，每个创意不超过100字",
 		slug: "ai-blog-title",
 		form: [
 			{
-				label: "Enter your blog topic",
+				label: "请输入您的需求",
 				field: "input",
-				name: "niche",
+				name: "请输入您的需求",
 				required: true,
 			},
 		],
 	},
 	{
-		name: "Blog Content",
-		desc: "An AI tool that serves as your personal blog writer, generating high quality SEO ready blog posts in seconds.",
+		name: "博客内容",
+		desc: "根据您的需求，生成高质量的SEO博客内容",
 		category: "blog",
 		icon: "https://cdn-icons-png.flaticon.com/128/4905/4905454.png",
 		slug: "ai-blog-content",
-		aiPrompt: "Generate Blog Content for the title: ",
+		aiPrompt:
+			"你是一位资深文案策划，请根据客户的需求，生成高质量的SEO博客内容，要求内容新颖，有吸引力，每个创意不超过500字",
 		form: [
 			{
-				label: "Enter your blog title",
+				label: "请输入您的需求",
 				field: "input",
-				name: "topic",
+				name: "需求",
 				required: true,
 			},
 		],

@@ -2,42 +2,43 @@
 import { auth } from "@/auth";
 import { prisma } from "@/prisma/prisma";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import Stripe from "stripe";
+//import Stripe from "stripe";
 import { ZhipuAI } from "zhipuai";
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_API!);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 const client = new ZhipuAI({ apiKey: process.env.ZHIPU_API_KEY! });
 
-interface CheckoutSessionResponse {
-	url?: string;
-	error?: string;
-}
+// interface CheckoutSessionResponse {
+// 	url?: string;
+// 	error?: string;
+// }
 // const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 // 	apiVersion: "2024-09-30.acacia",
 // });
 
-export const genContent = async (systemPrompt: string, prompt: string) => {
-	console.log(prompt, "-------------from genContent");
+//export const genContent = async (systemPrompt: string, prompt: string) => {
+	export const genContent = async ( prompt: string) => {
+	//console.log(prompt, "-------------from genContent");
 	try {
-		//const result = await model.generateContent(prompt);
-		// return {
-		// 	content: result.response.text(),
-		// };
-		const response = await client.chat.completions.create({
-            model: "glm-4-long", // 使用 GLM-4 模型
-            messages: [
-                {
-                    role: "system",
-                    content: systemPrompt
-                },
-                {
-                    role: "user",
-                    content: prompt
-                }
-            ],
-        });
-		return response.choices[0].message.content;
+		const result = await model.generateContent(prompt);
+		return {
+			content: result.response.text(),
+		};
+		// const response = await client.chat.completions.create({
+        //     model: "glm-4-long", // 使用 GLM-4 模型
+        //     messages: [
+        //         {
+        //             role: "system",
+        //             content: systemPrompt
+        //         },
+        //         {
+        //             role: "user",
+        //             content: prompt
+        //         }
+        //     ],
+        // });
+		//return response.choices[0].message.content;
 	} catch (error) {
 		console.log(error);
 		return {
@@ -62,7 +63,7 @@ export const saveQuery = async ({
 				template,
 				email: session?.user?.email!,
 				contents: content,
-				query,
+				query, 
 			},
 		});
 		if (newQuery) {

@@ -37,8 +37,10 @@ const TemplateDetailPage = (props: Props) => {
 		try {
 			//console.log(template?.aiPrompt + query, "-------------from handleSubmit");
 			setLoading(true);
-			const res = await genContent(template?.aiPrompt!, query);
-			setAiContent(res as string);
+			const res = await genContent(template?.aiPrompt + query);
+			setAiContent(res?.content!); 
+			//const res = await genContent(template?.aiPrompt!, query);
+			//setAiContent(res as string);
 			// await saveQuery({
 			// 	content: res?.content!,
 			// 	query,

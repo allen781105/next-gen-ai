@@ -1,6 +1,6 @@
 "use client";
 import { auth } from "@/auth";
-import { createCheckoutSession } from "@/lib/actions";
+//import { createCheckoutSession } from "@/lib/actions";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { User } from "next-auth";
 import { useSession } from "next-auth/react";
@@ -51,13 +51,13 @@ export default function PlanCard({ user }: { user: User }) {
 			router.push("/dashboard");
 		} else {
 			try {
-				const res = await createCheckoutSession();
-				if (res.error) {
-					toast.error(res.error);
-				}
-				if (res.url) {
-					window.location.href = res.url;
-				}
+				// const res = await createCheckoutSession();
+				// if (res.error) {
+				// 	toast.error(res.error);
+				// }
+				// if (res.url) {
+				// 	window.location.href = res.url;
+				// }
 			} catch (error) {
 				toast.error("Something went wrong");
 			}

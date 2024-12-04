@@ -1,13 +1,13 @@
 "use client";
-import { createCustomerPortal } from "@/lib/actions";
+//import { createCustomerPortal } from "@/lib/actions";
 
 const BillingPage = () => {
 	const handleClick = async () => {
-		const res = await createCustomerPortal();
+		// const res = await createCustomerPortal();
 
-		if (res?.url) {
-			window.location.href = res.url;
-		}
+		// if (res?.url) {
+		// 	window.location.href = res.url;
+		// }
 	};
 	return (
 		<div className="p-10 h-screen my-5 mx-5 mb-5 flex flex-col rounded-lg dark:bg-gray-900">
